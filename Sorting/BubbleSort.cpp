@@ -1,48 +1,32 @@
-
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-void bubbleSort(int array[], int n)
-{
-
-    for (int i = 0; i < (n - 1); ++i)
-    {
-        for (int j = 0; j < n - i - 1; ++j)
-        {
-
-            if (array[j] > array[j + 1])
-            {
-
-                int temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
-            }
-        }
-    }
-}
-
-void printArray(int array[], int n)
-{
-    for (int i = 0; i < n; ++i)
-    {
-        cout << "  " << array[i];
-    }
-    cout << "\n";
-}
-
+#define fri(i,a,b) for(int i = a; i<=b; i++)
+#define frd(i,a,b) for(int i = a; i>=b; i--)
 int main()
 {
+    int n;
+    cin>>n;
+    int arr[n];
+    fri( i ,  0 , n-1)
+        cin>>arr[i];
 
-    int data[] = {-2, 45, 0, 11, -9};
+    int flag;
+    fri(i , 0, n-2){
+        flag =0;
+        fri(j , 0 ,n-2-i){
+            if(arr[j] > arr[j+1]){
+                swap(arr[j] , arr[j+1]);
+                flag = 1;
+            }
+        }
+        if(flag == 0)
+            break;
+    }
 
-    int n = sizeof(data) / sizeof(data[0]);
+    fri( i , 0 , n-1)
+        cout<<arr[i]<<" ";
 
-    bubbleSort(data, n);
 
-    cout << "Sorted Array in Ascending Order:\n";
-    printArray(data, n);
+    return 0;
 }
-
-
-//best case : O(n)
-//avg and worst case: O(n^2)
